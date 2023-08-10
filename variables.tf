@@ -11,3 +11,6 @@ variable "ami_id" {
     eu-central-1 = "ami-9787h5h6nsn"
   }
 }
+
+
+# this is source code 
