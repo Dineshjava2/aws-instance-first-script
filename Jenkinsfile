@@ -14,21 +14,13 @@ pipeline {
     }
 
    agent  any
-        options {
-                timestamps ()
-                ansiColor('xterm')
-            }
+        
     stages {
         stage('checkout') {
             steps {
-                 script{
-                        dir("terraform")
-                        {
-                            git "https://github.com/Dineshjava2/aws-instance-first-script/tree/"
-                        }
-                    }
-                }
+                 checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'GIT_hub', url: 'https://github.com/Dineshjava2/aws-instance-first-script']])
             }
+        }
 
         stage('Plan') {
             steps {
@@ -62,6 +54,6 @@ pipeline {
         }
     }
 
-  }
+}
 
 
